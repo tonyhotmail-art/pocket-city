@@ -1,0 +1,294 @@
+/*
+ * 口袋城市 Pocket City — 設計系統
+ * 風格：沉浸式深色奢華（Immersive Dark Luxury）
+ * 主色：極深墨綠 #0a1a0a / 金色光澤 #c8a84b
+ * 字型：Noto Serif TC + Cormorant Garamond（標題）/ Noto Sans TC（內文）
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* 口袋城市自訂顏色 */
+  --color-gold: oklch(0.72 0.12 80);
+  --color-gold-light: oklch(0.82 0.10 80);
+  --color-gold-dim: oklch(0.60 0.09 80);
+  --color-forest: oklch(0.22 0.06 145);
+  --color-forest-deep: oklch(0.14 0.05 145);
+  --color-forest-card: oklch(0.18 0.05 145);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* 墨綠金色深色主題 */
+  --background: oklch(0.12 0.04 145);
+  --foreground: oklch(0.92 0.02 80);
+
+  --card: oklch(0.17 0.05 145);
+  --card-foreground: oklch(0.92 0.02 80);
+
+  --popover: oklch(0.17 0.05 145);
+  --popover-foreground: oklch(0.92 0.02 80);
+
+  /* 金色主色 */
+  --primary: oklch(0.72 0.12 80);
+  --primary-foreground: oklch(0.12 0.04 145);
+
+  --secondary: oklch(0.22 0.06 145);
+  --secondary-foreground: oklch(0.82 0.04 80);
+
+  --muted: oklch(0.20 0.05 145);
+  --muted-foreground: oklch(0.62 0.04 80);
+
+  --accent: oklch(0.25 0.07 145);
+  --accent-foreground: oklch(0.82 0.08 80);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.30 0.06 145 / 50%);
+  --input: oklch(0.25 0.06 145);
+  --ring: oklch(0.72 0.12 80 / 60%);
+
+  --chart-1: oklch(0.72 0.12 80);
+  --chart-2: oklch(0.60 0.09 80);
+  --chart-3: oklch(0.50 0.08 80);
+  --chart-4: oklch(0.40 0.06 80);
+  --chart-5: oklch(0.30 0.05 80);
+
+  --sidebar: oklch(0.14 0.04 145);
+  --sidebar-foreground: oklch(0.92 0.02 80);
+  --sidebar-primary: oklch(0.72 0.12 80);
+  --sidebar-primary-foreground: oklch(0.12 0.04 145);
+  --sidebar-accent: oklch(0.22 0.06 145);
+  --sidebar-accent-foreground: oklch(0.82 0.04 80);
+  --sidebar-border: oklch(0.30 0.06 145 / 40%);
+  --sidebar-ring: oklch(0.72 0.12 80 / 60%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  h1, h2, h3 {
+    font-family: 'Noto Serif TC', serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* 金色漸層文字 */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #c8a84b 0%, #f0d080 50%, #c8a84b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* 金色邊框卡片 */
+  .card-gold-border {
+    border: 1px solid oklch(0.72 0.12 80 / 30%);
+    background: oklch(0.17 0.05 145 / 80%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card-gold-border:hover {
+    border-color: oklch(0.72 0.12 80 / 70%);
+    box-shadow: 0 0 24px oklch(0.72 0.12 80 / 20%);
+  }
+
+  /* 金色 CTA 按鈕 */
+  .btn-gold {
+    background: linear-gradient(135deg, #c8a84b 0%, #e2c068 50%, #c8a84b 100%);
+    color: oklch(0.12 0.04 145);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e2c068 0%, #f0d080 50%, #e2c068 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-gold:hover::before {
+    opacity: 1;
+  }
+
+  .btn-gold span {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 金色脈衝動畫 */
+  @keyframes gold-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.72 0.12 80 / 40%); }
+    50% { box-shadow: 0 0 0 12px oklch(0.72 0.12 80 / 0%); }
+  }
+
+  .btn-gold-pulse {
+    animation: gold-pulse 2.5s ease-in-out infinite;
+  }
+
+  /* 光點背景動畫 */
+  @keyframes float-particle {
+    0% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
+    33% { transform: translateY(-20px) translateX(10px); opacity: 1; }
+    66% { transform: translateY(-10px) translateX(-8px); opacity: 0.7; }
+    100% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
+  }
+
+  /* 淡入上滑動畫 */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease forwards;
+  }
+
+  .animate-fade-up-delay-1 {
+    animation: fade-up 0.8s ease 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-2 {
+    animation: fade-up 0.8s ease 0.4s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-3 {
+    animation: fade-up 0.8s ease 0.6s forwards;
+    opacity: 0;
+  }
+
+  /* 細金線分隔 */
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, oklch(0.72 0.12 80 / 60%), transparent);
+  }
+
+  /* 玻璃態效果 */
+  .glass-card {
+    background: oklch(0.17 0.05 145 / 60%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid oklch(0.72 0.12 80 / 20%);
+  }
+
+  /* BETA 標籤 */
+  .badge-beta {
+    background: linear-gradient(135deg, oklch(0.72 0.12 80 / 20%), oklch(0.72 0.12 80 / 10%));
+    border: 1px solid oklch(0.72 0.12 80 / 40%);
+    color: oklch(0.82 0.10 80);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  /* Coming Soon 標籤 */
+  .badge-coming {
+    background: oklch(0.25 0.06 145 / 80%);
+    border: 1px solid oklch(0.40 0.06 145);
+    color: oklch(0.65 0.04 80);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+}
